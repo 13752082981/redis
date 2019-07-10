@@ -1,0 +1,36 @@
+#application.peoperties 优先级最高
+#mybatis配置
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: cn.tx.redis.domain
+   #数据源
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据库操作类型
+    driver-class-name: com.mysql.jdbc.Driver #mysql驱动包
+    url: jdbc:mysql://127.0.0.1:3306/cloudDB01    #url连接地址
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5           #连接池最小连接数
+      initial-size: 5       #初始化连接数
+      max-idle: 5           #连接池最大连接数
+      max-wait-millis: 200  #等待连接获取的最大超时时间
+     #jackson时间格式化
+
+   #redis配置
+  redis:
+    cluster:
+      nodes: 192.168.160.134:7001,192.168.160.134:7002,192.168.160.134:7003,192.168.160.134:7004,192.168.160.134:7005,192.168.160.134:7006
+    jedis:
+      pool:
+        max-active: 300
+        max-idle: 100
+        min-idle: 20
+        max-wait: -1
+    timeout: 6000
+    password:
+    database: 0
+
+
